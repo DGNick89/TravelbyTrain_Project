@@ -1,0 +1,31 @@
+.seat-selection {
+   display: flex;
+   justify-content: center;
+   height: 1000px;
+   background-image: url('/images/coach.png');
+   background-position: center;
+   background-repeat: no-repeat;   
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    display: inline;
+    margin-right: 10px;
+}
+
+.checkout {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.travel-details h3 {
+    display: inline;
+    margin-left: 20px;
+}
+
+#checkout-btn {
+    margin-top: 10px;
+}

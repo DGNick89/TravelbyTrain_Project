@@ -1,0 +1,9 @@
+.destination-div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.train-route {
+    display: flex;
+    justify-content: space-evenly;
+}

@@ -11,7 +11,7 @@ export default function TrainRoutes({trainRoutes}) {
                 <h3>Price</h3>  
             </div> 
             {trainRoutes.map((routes, idx) => (
-                <div key={idx}>
+                <div className='train-routes' key={idx}>
                     <h2>{routes.from}</h2>
                     <h2>{routes.to}</h2>
                     <h2>{routes.distance}</h2>

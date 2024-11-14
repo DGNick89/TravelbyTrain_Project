@@ -1,17 +1,31 @@
 .routes {
-   display: flex;
-   flex-wrap: nowrap;
-   flex-direction: column;
-   align-items:stretch;
-   gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 50px; 
+
     
 }
 
-.routes h2 {
-    margin: 0 30px;
-    padding: 0 50px;
+.train-routes {
+    border-bottom: solid 1px rgba(0, 0, 0, 0.308);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 50px;
 }
 
+.routes h2 {
+    margin-left: 140px;
+    width: 100%;
+}
+
+.routes button {
+    float: right;
+    margin-right: 60px;
+    border-radius: 10%;
+    max-height: fit-content;
+}
 .routes-header {
     display: flex;
     justify-content: flex-start;
@@ -19,6 +33,9 @@
     padding-left: 50px;
     color: darkgrey;
 }
+
 .routes-header h3 {
-    margin-left: 120px;
+    margin-left: 160px;
+    border-bottom: 1px solid darkgray;
+    font-size: 25px;
 }

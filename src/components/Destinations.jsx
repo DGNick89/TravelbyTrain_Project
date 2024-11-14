@@ -4,13 +4,9 @@ import BookingPage from "./BookingPage"
 import Slideshow from "./SlideShow"
 import {Link, Route, Routes} from 'react-router-dom'
 
-export default function Destinations({stations}, handleSelect) {
+export default function Destinations({stations}) {
 
-    const [selectedStations, setSelectedStations] = useState([])
-
-    function handleSelect(e) {
-        setSelectedStations(stations[e.target.value])
-    }
+  
  
 
 

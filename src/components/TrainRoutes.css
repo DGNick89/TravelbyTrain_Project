@@ -1,0 +1,24 @@
+.routes {
+   display: flex;
+   flex-wrap: nowrap;
+   flex-direction: column;
+   align-items:stretch;
+   gap: 40px;
+    
+}
+
+.routes h2 {
+    margin: 0 30px;
+    padding: 0 50px;
+}
+
+.routes-header {
+    display: flex;
+    justify-content: flex-start;
+    gap: 50px;
+    padding-left: 50px;
+    color: darkgrey;
+}
+.routes-header h3 {
+    margin-left: 120px;
+}

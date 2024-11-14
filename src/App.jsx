@@ -5,6 +5,8 @@ import CheckOutPage from './components/CheckOutPage'
 import './App.css'
 import { useState } from "react"
 import {Link, Route, Routes} from 'react-router-dom'
+import SideNav from './components/SideNav'
+import TrainRoutes from './components/TrainRoutes'
 
 function App() {
  
@@ -19,18 +21,109 @@ function App() {
     {name:'Darwin', details:'Darwin is the capital of Australias Northern Territory and a former frontier outpost. Its also a gateway to massive Kakadu National Park. Its popular waterfront area has several beaches and green areas like Bicentennial Park.', pic:'https://northernterritoryresources.com.au/__data/assets/image/0004/1347745/Hero_Darwin-lighter.jpg'}, 
     {name:'Alice Springs', details:'Alice Springs is a remote town in Australia’s Northern Territory, halfway between Darwin and Adelaide, both 1,500km away. It’s a popular gateway for exploring the Red Centre, the countrys interior desert region.', pic:'https://www.journeybeyondrail.com.au/wp-content/uploads/2023/11/Alice-Springs-Town.jpg'}])
 
-      
+    const [trainRoutes, setTrainRoutes] = useState([
+      {
+          from: 'Sydney',
+          to: 'Melbourne', 
+          distance: '900km', 
+          duration: '11hrs', 
+          price: '$94'
+      },
+      {
+          from: 'Melbourne',
+          to: 'Brisbane',
+          distance: '1700km',
+          duration: '20hrs',
+          price: '$150',
+      },
+      {
+          from: 'Brisbane',
+          to: 'Gold Coast',
+          distance: '80km',
+          duration: '2hrs',
+          price: '$20',
+      },
+      {
+          from: 'Brisbane',
+          to: 'Canberra',
+          distance: '1150km',
+          duration: '14hrs',
+          price: '$130',
+      },
+      {
+          from: 'Sydney',
+          to: 'Canberra',
+          distance: '290km',
+          duration: '4hrs',
+          price: '$50',
+      },
+      {
+          from: 'Melbourne',
+          to: 'Perth',
+          distance: '3400km',
+          duration: '72hrs',
+          price: '$500',
+      },
+      {
+          from: 'Perth',
+          to: 'Darwin',
+          distance: '3000km',
+          duration: '40hrs',
+          price: '$450',
+      },
+      {
+          from: 'Darwin',
+          to: 'Alice Springs',
+          distance: '1500km',
+          duration: '24hrs',
+          price: '$200',
+      },
+      {
+          from: 'Alice Springs',
+          to: 'Sydney',
+          distance: '1600km',
+          duration: '18hrs',
+          price: '$220',
+      }
+  ])
+
+    
+    const [wid, setWid] = useState('0%')
+
+    const openSidenav = ( ) => {
+      setWid('15%')
+    }
+  
+    const closeSidenav = ( ) => {
+      setWid('0%')
+    }
    
+
+
 
   return (
     <>
-    
+      <header style={{ marginLeft: wid, transition: 'margin-left 0.5s ease' }}>
+        <h1>Travel by Train</h1>
+        <button className='open-btn' onClick={openSidenav}>☰</button>
+      </header>
 
-    <Routes>
-      <Route path='/' element={<HomePage stations={stations}/>} />
-      <Route path='/booking' element={<BookingPage stations={stations} />} />
-      <Route path="/checkout" element={<CheckOutPage />} />
-    </Routes>
+      
+        <SideNav width={wid} closeNav={closeSidenav}/>
+
+      <main style={{ marginLeft: wid, transition: 'margin-left 0.5s ease' }}>
+
+        <Routes>
+          <Route path='/trainroutes' element={<TrainRoutes trainRoutes={trainRoutes}/>} />
+          <Route path='/' element={<HomePage stations={stations}/>} />
+          <Route path='/booking' element={<BookingPage stations={stations} trainRoutes={trainRoutes} />} />
+          <Route path="/checkout" element={<CheckOutPage />} />
+        </Routes>
+
+      </main>
+      <footer>
+        <div className='footer'></div>
+      </footer>
     </>
   )
 }

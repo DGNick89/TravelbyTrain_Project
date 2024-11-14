@@ -2,78 +2,14 @@ import { useState } from 'react'
 import SeatSelection from './SeatSelection'
 import './BookingPage.css'
 
-export default function BookingPage({stations}) {
+export default function BookingPage({stations, trainRoutes}) {
 
     const [selectedFrom, setSelectedFrom] = useState('')
     const [selectedTo, setSelectedTo] = useState('')
     const [showSeats, setShowSeats] = useState(false)
     const [route, setRoute] = useState([])
 
-    const [trainRoutes, setTrainRoutes] = useState([
-        {
-            from: 'Sydney',
-            to: 'Melbourne', 
-            distance: '900km', 
-            duration: '11hrs', 
-            price: '$94'
-        },
-        {
-            from: 'Melbourne',
-            to: 'Brisbane',
-            distance: '1700km',
-            duration: '20hrs',
-            price: '$150',
-        },
-        {
-            from: 'Brisbane',
-            to: 'Gold Coast',
-            distance: '80km',
-            duration: '2hrs',
-            price: '$20',
-        },
-        {
-            from: 'Brisbane',
-            to: 'Canberra',
-            distance: '1150km',
-            duration: '14hrs',
-            price: '$130',
-        },
-        {
-            from: 'Sydney',
-            to: 'Canberra',
-            distance: '290km',
-            duration: '4hrs',
-            price: '$50',
-        },
-        {
-            from: 'Melbourne',
-            to: 'Perth',
-            distance: '3400km',
-            duration: '72hrs',
-            price: '$500',
-        },
-        {
-            from: 'Perth',
-            to: 'Darwin',
-            distance: '3000km',
-            duration: '40hrs',
-            price: '$450',
-        },
-        {
-            from: 'Darwin',
-            to: 'Alice Springs',
-            distance: '1500km',
-            duration: '24hrs',
-            price: '$200',
-        },
-        {
-            from: 'Alice Springs',
-            to: 'Sydney',
-            distance: '1600km',
-            duration: '18hrs',
-            price: '$220',
-        }
-    ])
+   
 
     function handleTrainRoute(e) {
         e.preventDefault()

@@ -25,7 +25,13 @@ export default function BookingPage({stations, trainRoutes}) {
         (route, idx) => route.from === selectedFrom && route.to === selectedTo)
 
 
-    let noRoutes = `No routes found from ${selectedFrom} to ${selectedTo}`
+    let noRoutes = ``
+    if (selectedTo === '' && selectedFrom === '') {
+        noRoutes
+    } else if (!matchingRoute) {
+        noRoutes = `No routes found from ${selectedFrom} to ${selectedTo}`
+
+    }
    
 
     function handleClick() {
@@ -65,11 +71,11 @@ export default function BookingPage({stations, trainRoutes}) {
                         <h3><span>Distance:</span> <br/>{matchingRoute.distance}</h3>
                         <h3><span>Duration:</span> <br/>{matchingRoute.duration}</h3>
                         <h3><span>Price:</span> <br/>{`$${matchingRoute.price}`}</h3>
-                        <button onClick={handleClick}>Select seats</button> 
+                        <button className='select-seats-btn' onClick={handleClick}>Select seats</button> 
                     </div>
                     ) : (
                     <div>
-                        <p className='no-routes'>{!matchingRoute ? noRoutes : ''}</p>
+                        <p className='no-routes'>{noRoutes}</p>
                     </div>
                     )}
                     <div>

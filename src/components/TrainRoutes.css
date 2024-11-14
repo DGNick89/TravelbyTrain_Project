@@ -26,6 +26,11 @@
     margin-right: 60px;
     border-radius: 10%;
     max-height: fit-content;
+    
+}
+
+.routes button:hover {
+    color: chartreuse;
 }
 .routes-header {
     display: flex;

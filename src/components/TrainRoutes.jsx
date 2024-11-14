@@ -1,6 +1,22 @@
+import { useState } from 'react'
 import './TrainRoutes.css'
+import BookingPage from './BookingPage'
+import SeatSelection from './SeatSelection'
 
 export default function TrainRoutes({trainRoutes}) {
+
+    const [route, setRoute] = useState([])
+    const [selected, setSelected] = useState(false)
+
+    function handleClick(idx) {
+        let newTrainRoute = trainRoutes[idx]
+        setRoute(...route, newTrainRoute)
+        setSelected(true)
+        
+    }
+    
+    
+
     return (
         <div className="routes">
             <div className='routes-header'>
@@ -16,10 +32,14 @@ export default function TrainRoutes({trainRoutes}) {
                     <h2>{routes.to}</h2>
                     <h2>{routes.distance}</h2>
                     <h2>{routes.duration}</h2>
-                    <h2>{routes.price}</h2>
-                    <button>book now</button>
+                    <h2>{`$${routes.price}`}</h2>
+                    <button onClick={() => handleClick(idx)}>book now</button>
                 </div>
             ))}
+
+            <div>
+                {selected ? <SeatSelection matchingRoute={route} /> : ''}
+            </div>
 
         </div>
     )

@@ -28,7 +28,7 @@ export default function SeatSelection({matchingRoute}) {
     const matchingRouteCopy = { ...matchingRoute }
 
     function handleCheckout() {
-        navigate('/checkout', { state: { matchingRouteCopy }}, { state: [selectedSeats]})
+        navigate('/checkout', { state: {selectedSeats, matchingRouteCopy}})
     } 
      
 
@@ -79,6 +79,7 @@ export default function SeatSelection({matchingRoute}) {
     
     return (
       <div>
+        <h2 className='seats-title'>Select your seats</h2>  
         <div className="seat-container">
           {seats.map((row, rowIndex) => (
             <div key={rowIndex} className="seat-row">

@@ -9,66 +9,79 @@
     padding: 10px 10px;
   }
   
-  .seat-row {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .seat-side {
-    display: flex;
-    gap: 5px;
-  }
-  
-  .corridor {
-    width: 50px;
-  }
-  
-  .seat {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ccc;
-    cursor: pointer;
-  }
-  
-  .seat:hover {
-    color: #0ef30e;
-  
-  }
-  
-  .seat.available {
-    background-color: #f0f0f0;
-  }
-  
-  .seat.selected {
-    background-color: #4caf50;
-    color: #fff;
-  }
+.seat-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.seat-side {
+  display: flex;
+  gap: 5px;
+}
+
+.corridor {
+  width: 50px;
+}
+
+.seat {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.seat:hover {
+  color: #0ef30e;
+
+}
+
+.seat.available {
+  background-color: #f0f0f0;
+}
+
+.seat.selected {
+  background-color: #4caf50;
+  color: #fff;
+}
 
 .checkout {
-    text-align: center;
-    margin: 10px 0;
-    font-family: "Pridi", serif;
-    font-weight: 200;
-    font-style: normal;
+  text-align: center;
+  margin: 10px 0;
+  font-family: "Pridi", serif;
+  font-weight: 200;
+  font-style: normal;
 }
 
 .travel-details h3 {
-    display: inline;
-    margin-left: 20px;
+  display: inline;
+  margin-left: 20px;
 }
 
 #checkout-btn {
-    margin-top: 10px;
+  margin-top: 10px;
+  float: none;
+}
+
+.routes #checkout-btn {
+  text-align: center;
 }
 
 .warning-message {
-    font-size: 20px;
-    text-align: center;
-    color: red;
-    font-weight: bold;
-    margin-top: 10px;
-  }
+  font-size: 20px;
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.seats-title {
+  width: 100%;
+  text-align: center;
+  font-family: "Pridi", serif;
+  font-weight: 200;
+  font-style: normal;
+}

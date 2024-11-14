@@ -18,3 +18,21 @@ span {
     color: darkgray;
 }
 
+.select-seats-btn {
+    height: 50px;
+    margin-top: 25px;
+    border-radius: 8%;
+}
+
+.select-seats-btn:hover {
+    color: chartreuse;
+}
+
+.no-routes{
+    color: red;
+    text-align: center;
+    font-family: "Pridi", serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 20px;
+}

@@ -7,6 +7,8 @@ import { useState } from 'react'
 export default function CheckOutPage({}) {
     const location = useLocation()
     const matchingRouteCopy = location.state?.matchingRouteCopy
+    const selectedSeats = location.state?.selectedSeats
+    
     
     const [payment, setPayment] = useState(false)
     
@@ -26,6 +28,10 @@ export default function CheckOutPage({}) {
     function handleClick() {
         setPayment(true)
     }
+    console.log(selectedSeats);
+    
+    
+    
 
 
     return (
@@ -54,6 +60,7 @@ export default function CheckOutPage({}) {
                     <h3><span>To:</span> {matchingRouteCopy.to}</h3>
                     <h3><span>Distance:</span> {matchingRouteCopy.distance}</h3>
                     <h3><span>Duration:</span> {matchingRouteCopy.duration}</h3>
+                    <h3><span>Seats:</span> {selectedSeats}</h3>
                 </div>
                 <div>
                     <h3><span>Name:</span> {details.name}</h3>

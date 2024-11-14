@@ -1,86 +1,134 @@
 import { useState } from 'react'
 import './SeatSelection.css'
 import CheckOutPage from './CheckOutPage'
-import {Link, Route, Routes} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 export default function SeatSelection({matchingRoute}) {
 
-    const [tickets, setTickets] = useState(false)
-    const [cart, setCart] = useState([])
-    const [numberOfSeats, setNumberOfSeats] = useState('')
-    const [seatNumbers, setSeatNumbers] = useState([])
-    const [checkout, setCheckout] = useState(false)
-    const navigate = useNavigate()
+ 
+    const navigate = useNavigate()    
 
-    function handleSeats(e) {
-        setTickets(true)
-        setNumberOfSeats(e.target.value)
-        setSeatNumbers(new Array(parseInt(e.target.value) || 0).fill(''))
-    }
-
+    const rows = 15; 
+    const colsPerSide = 3; 
+    const totalSeats = rows * colsPerSide * 2
+    
+    
+    const initialSeats = Array.from({ length: rows }, () => ({
+        left: Array(colsPerSide).fill(false),
+        right: Array(colsPerSide).fill(false),
+    }));
+    
+    const [seats, setSeats] = useState(initialSeats);
+    const [selectedCount, setSelectedCount] = useState(0);
+    const [selectedSeats, setSelectedSeats] = useState([]);
+    const [isMaxSelectionReached, setIsMaxSelectionReached] = useState(false);
+    
+    const maxSelection = 2;
+    
     const matchingRouteCopy = { ...matchingRoute }
-    console.log(matchingRouteCopy);
-    
+
     function handleCheckout() {
-        setCart(matchingRouteCopy)
-        navigate('/checkout', { state: { matchingRouteCopy }})
-    }
+        navigate('/checkout', { state: { matchingRouteCopy }}, { state: [selectedSeats]})
+    } 
+     
 
-    const seatInputs = [];
-    for (let i = 0; i < Number(numberOfSeats); i++) {
-        seatInputs.push(
-            <div key={i}>
-                <label htmlFor={`seat-${i + 1}`}>Seat {i + 1} number:</label>
-                <input 
-                    type="number" 
-                    id={`seat-${i + 1}`} 
-                    min="1" max="108"  
-                    value={seatNumbers[i] || ''}
-                    onChange={(e) => handleSeatNumberChange(i, e.target.value)}  />
-            </div>
-        )
-    }
+  
+    const handleSeatClick = (rowIndex, colIndex, side) => {
+      const isSeatSelected = seats[rowIndex][side][colIndex];
+      const seatLabel = `Row ${rowIndex + 1} - Seat ${colIndex + 1} (${side})`;
+  
+      if (!isSeatSelected && selectedCount >= maxSelection) {
+        setIsMaxSelectionReached(true);
+        return;
+      }
+  
+      const updatedSeats = seats.map((row, rIndex) => {
+        if (rIndex === rowIndex) {
+          return {
+            ...row,
+            [side]: row[side].map((seat, cIndex) => {
+              if (cIndex === colIndex) {
+                return !seat;
+              }
+              return seat;
+            }),
+          };
+        }
+        return row;
+      });
+  
+      let newSelectedSeats;
+      if (isSeatSelected) {
+        newSelectedSeats = selectedSeats.filter(s => s !== seatLabel);
+        setSelectedCount(selectedCount - 1);
+        setIsMaxSelectionReached(false);
+      } else {
+        newSelectedSeats = [...selectedSeats, seatLabel];
+        setSelectedCount(selectedCount + 1);
+      }
+  
+      setSeats(updatedSeats);
+      setSelectedSeats(newSelectedSeats);
+    };
+  
+    let seatNumber = 1;
+    let totalPrice = matchingRoute.price * Number(selectedSeats.length)
+    console.log(selectedSeats);
+
+  
     
-    function handleSeatNumberChange(index, value) {
-        const updatedSeatNumbers = [...seatNumbers];
-        updatedSeatNumbers[index] = value;
-        setSeatNumbers(updatedSeatNumbers);
-        
-    }
-            
-
     return (
-        <div>
-            <h1>Select your seats</h1>
-            <h2>How many tickets?</h2>
-            <select onChange={handleSeats} name="seat-count" value={numberOfSeats}>
-                <option value=""></option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-            <p>MAX 3 TICKETS PER PURCHASE</p>
-
-            {tickets && numberOfSeats ? (
-                <div>
-                    <h2>Please, select your seat number(s)</h2>
-                    {seatInputs} {}
-                    <button className="cart-btn">Add to cart</button>
-                </div>) : ( '' )}
-            <div className='seat-selection'>            
-               
+      <div>
+        <div className="seat-container">
+          {seats.map((row, rowIndex) => (
+            <div key={rowIndex} className="seat-row">
+             
+              <div className="seat-side">
+                {row.left.map((seat, colIndex) => (
+                  <div
+                    key={`left-${colIndex}`}
+                    className={`seat ${seat ? 'selected' : 'available'}`}
+                    onClick={() => handleSeatClick(rowIndex, colIndex, 'left')}
+                  >
+                    {seatNumber++}
+                  </div>
+                ))}
+              </div>
+              
+              <div className="corridor"></div>
+              
+              <div className="seat-side">
+                {row.right.map((seat, colIndex) => (
+                  <div
+                    key={`right-${colIndex}`}
+                    className={`seat ${seat ? 'selected' : 'available'}`}
+                    onClick={() => handleSeatClick(rowIndex, colIndex, 'right')}
+                  >
+                    {seatNumber++}
+                  </div>
+                ))}
+              </div>
             </div>
-            <section className='checkout'>
-                <div className='travel-details'>
-                    <h3>Seat Number: {seatNumbers.filter(Boolean).join(', ')} </h3>
-                    <h3>From: {matchingRoute.from}</h3>
-                    <h3>To: {matchingRoute.to}</h3>
-                </div>
-                <button id='checkout-btn' onClick={handleCheckout}>Go to Checkout!</button>
-            </section>
+          ))}
+        </div>
+        {isMaxSelectionReached && <p className='warning-message'>You can only select up to {maxSelection} seats.</p>}
+        <section className='checkout'>
+          <div className='travel-details'>
+            <h3>Seat number: {selectedSeats.join(', ')}</h3>
+            <h3>From: {matchingRoute.from}</h3>
+            <h3>To: {matchingRoute.to}</h3>
+            <h3>Price total: {totalPrice}</h3>
+          </div>
+          <button id='checkout-btn' onClick={handleCheckout}>Go to Checkout!</button>
+        </section>
+      </div>
+    );
+}
+    
+
+
+
+
 
             
-        </div>
-    )
-} 
+        

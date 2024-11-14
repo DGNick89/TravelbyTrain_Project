@@ -2,16 +2,17 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    gap: 50px; 
-
+    gap: 50px;
+    font-family: "Pridi", serif;
+    font-weight: 200;
+    font-style: normal;
     
 }
 
 .train-routes {
     border-bottom: solid 1px rgba(0, 0, 0, 0.308);
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: row;    
     gap: 50px;
 }
 
@@ -35,7 +36,7 @@
 }
 
 .routes-header h3 {
-    margin-left: 160px;
+    margin-left: 140px;
     border-bottom: 1px solid darkgray;
     font-size: 25px;
 }

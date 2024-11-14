@@ -1,11 +1,20 @@
 .destination-div {
     display: flex;
     justify-content: space-evenly;
+    font-family: "Pridi", serif;
+    font-weight: 200;
+    font-style: normal;
 }
 
 .train-route {
     display: flex;
     justify-content: space-evenly;
+    font-family: "Pridi", serif;
+    font-weight: 200;
+    font-style: normal;
 }
 
+span {
+    color: darkgray;
+}
 

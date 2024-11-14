@@ -23,10 +23,10 @@ export default function BookingPage({stations, trainRoutes}) {
 
     const matchingRoute = trainRoutes.find(
         (route, idx) => route.from === selectedFrom && route.to === selectedTo)
-    let noRoutes = ''
-    if (!matchingRoute) {
-        noRoutes = `No routes found from ${selectedFrom} to ${selectedTo}`
-    }
+
+
+    let noRoutes = `No routes found from ${selectedFrom} to ${selectedTo}`
+   
 
     function handleClick() {
         setShowSeats(true)     
@@ -60,16 +60,16 @@ export default function BookingPage({stations, trainRoutes}) {
                     
                     {matchingRoute ? (
                     <div className='train-route'>
-                        <h3>From: <br/>{matchingRoute.from}</h3>
-                        <h3>To: <br/>{matchingRoute.to}</h3>
-                        <h3>Distance: <br/>{matchingRoute.distance}</h3>
-                        <h3>Duration: <br/>{matchingRoute.duration}</h3>
-                        <h3>Price: <br/>{matchingRoute.price}</h3>
+                        <h3><span>From:</span> <br/>{matchingRoute.from}</h3>
+                        <h3><span>To:</span> <br/>{matchingRoute.to}</h3>
+                        <h3><span>Distance:</span> <br/>{matchingRoute.distance}</h3>
+                        <h3><span>Duration:</span> <br/>{matchingRoute.duration}</h3>
+                        <h3><span>Price:</span> <br/>{`$${matchingRoute.price}`}</h3>
                         <button onClick={handleClick}>Select seats</button> 
                     </div>
                     ) : (
                     <div>
-                        <p>{noRoutes}</p>
+                        <p className='no-routes'>{!matchingRoute ? noRoutes : ''}</p>
                     </div>
                     )}
                     <div>

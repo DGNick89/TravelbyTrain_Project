@@ -1,5 +1,6 @@
-
-.header {
-    height: 50px;
+.main-content {
     text-align: center;
+    font-family: "Pridi", serif;
+    font-weight: 200;
+    font-style: normal;
 }

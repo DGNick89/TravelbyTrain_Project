@@ -5,9 +5,19 @@ header {
   background-color: #b0954b;
   font-size: 20px;
   color: white;
-  border: 1px solid #e8d8ac;
+  border: 3px solid #e8d8ac;
+  text-shadow: 2px 2px black;
+  font-family: "Pridi", serif;
+  font-weight: 200;
+  font-style: normal;
 
 }
+
+header h1 {
+  text-align: center;
+}
+
+
 
 .sidenav {
   height: 100%;  
@@ -23,12 +33,16 @@ header {
   display: flex; 
   flex-direction: column; 
   align-items: center;
+  font-family: "Pridi", serif;
+  font-weight: 200;
+  font-style: normal;
 }
 
 .sidenav a {
   margin-top: 20px;
   font-size: 25px;
   color: white;
+  text-shadow: 1px 1px black;
 }
 
 .sidenav a:hover {

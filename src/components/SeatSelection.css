@@ -1,24 +1,59 @@
-.seat-selection {
-   display: flex;
-   justify-content: center;
-   height: 1000px;
-   background-image: url('/images/coach.png');
-   background-position: center;
-   background-repeat: no-repeat;   
-}
-
-h1 {
-    text-align: center;
-}
-
-h2 {
-    display: inline;
-    margin-right: 10px;
-}
+.seat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 20%;
+    margin: 20px auto;
+    border: 1px solid black;
+    padding: 10px 10px;
+  }
+  
+  .seat-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .seat-side {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .corridor {
+    width: 50px;
+  }
+  
+  .seat {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .seat:hover {
+    color: #0ef30e;
+  
+  }
+  
+  .seat.available {
+    background-color: #f0f0f0;
+  }
+  
+  .seat.selected {
+    background-color: #4caf50;
+    color: #fff;
+  }
 
 .checkout {
     text-align: center;
     margin: 10px 0;
+    font-family: "Pridi", serif;
+    font-weight: 200;
+    font-style: normal;
 }
 
 .travel-details h3 {
@@ -29,3 +64,11 @@ h2 {
 #checkout-btn {
     margin-top: 10px;
 }
+
+.warning-message {
+    font-size: 20px;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }

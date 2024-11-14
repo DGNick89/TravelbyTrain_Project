@@ -33,7 +33,7 @@ export default function SeatSelection({matchingRoute}) {
      
 
   
-    const handleSeatClick = (rowIndex, colIndex, side) => {
+    function handleSeatClick(rowIndex, colIndex, side) {
       const isSeatSelected = seats[rowIndex][side][colIndex];
       const seatLabel = `Row ${rowIndex + 1} - Seat ${colIndex + 1} (${side})`;
   
@@ -78,8 +78,7 @@ export default function SeatSelection({matchingRoute}) {
   
     
     return (
-      <div className='seat-selection-div'>
-        <h2 className='seats-title'>Select your seats</h2>  
+      <div className='seat-selection-div'>  
         <div className="seat-container">
           {seats.map((row, rowIndex) => (
             <div key={rowIndex} className="seat-row">

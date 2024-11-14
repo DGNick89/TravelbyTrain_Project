@@ -18,22 +18,21 @@ export default function Slideshow({ stations }) {
         <div className="slideshow">
             {stations.map((station, index) => (
                 <div
-                key={index}
+                key={station.id}
                 className={`slideshow-container ${index === currentIndex ? 'show' : ''}`}
                 >
                 <img
-                    key={index}
+                    key={station.id}
                     className={`slideshow-image ${index === currentIndex ? 'show' : ''}`}
                     src={station.pic}
                     alt={station.name}
                    
                 />                
             
-            {index === currentIndex && (
                         <div className="slideshow-overlay">
-                            <h2 className="slideshow-title">{station.name}</h2>
+                           <h2 className="slideshow-title">{station.name}</h2>
                         </div>
-                    )}
+                    
                     </div>
             ))}
         </div>

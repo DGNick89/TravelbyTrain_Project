@@ -122,7 +122,9 @@ function App() {
 
       </main>
       <footer>
-        <div className='footer'></div>
+        <div className='footer'>
+          <h3>&copy; 2024 NICK ENTERPRISES</h3>
+        </div>
       </footer>
     </>
   )

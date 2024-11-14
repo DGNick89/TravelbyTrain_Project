@@ -78,7 +78,7 @@ export default function SeatSelection({matchingRoute}) {
   
     
     return (
-      <div>
+      <div className='seat-selection-div'>
         <h2 className='seats-title'>Select your seats</h2>  
         <div className="seat-container">
           {seats.map((row, rowIndex) => (
@@ -115,10 +115,10 @@ export default function SeatSelection({matchingRoute}) {
         {isMaxSelectionReached && <p className='warning-message'>You can only select up to {maxSelection} seats.</p>}
         <section className='checkout'>
           <div className='travel-details'>
-            <h3>Seat number: {selectedSeats.join(', ')}</h3>
-            <h3>From: {matchingRoute.from}</h3>
-            <h3>To: {matchingRoute.to}</h3>
-            <h3>Price total: {totalPrice}</h3>
+            <h3> <span>Seat number:</span> {selectedSeats.join(', ')}</h3>
+            <h3><span>From:</span> {matchingRoute.from}</h3>
+            <h3><span>To:</span> {matchingRoute.to}</h3>
+            <h3><span>Price Total:</span> {`$${totalPrice}`}</h3>
           </div>
           <button id='checkout-btn' onClick={handleCheckout}>Go to Checkout!</button>
         </section>

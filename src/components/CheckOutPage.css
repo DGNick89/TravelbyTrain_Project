@@ -18,9 +18,17 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
     height: 100px;
 }
 
 .ticket span {
     color: darkgrey;
+}
+
+.ticket {
+    margin: 20px auto;
+    padding: 0 15px;
+    background-image: url('https://media.istockphoto.com/id/1202341946/photo/white-paper-with-structure-closeup-detail-can-be-used-as-background-texture.jpg?s=612x612&w=0&k=20&c=mrXgCTh6QXeV636M3uwupNpmNtQlFaiFEhpbFeE0RsY=');
+    width: 60%;
 }

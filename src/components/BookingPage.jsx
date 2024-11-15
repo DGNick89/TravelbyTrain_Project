@@ -38,9 +38,7 @@ export default function BookingPage({stations, trainRoutes}) {
         setShowSeats(true)     
         setRoute(matchingRoute)
     }
-
-    
-    
+       
 
         return(
             <div>

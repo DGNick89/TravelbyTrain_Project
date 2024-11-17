@@ -17,7 +17,7 @@ This WebApp was designed to allow users to search for destinations that can be a
 No need to sign up, just search for your destination, select your seats and provide your details to get your ticket
 
 
-## :rocket: [Click Here](https://dgnick89.github.io/TravelbyTrain_Project/) to see my live project!
+## :rocket: [Click Here](https://travelbytrainproject.netlify.app/) to see my live project!
 
 
 ## Technologies Used
